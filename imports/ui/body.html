@@ -1,0 +1,22 @@
+<body>
+<div class="container">
+    <header>
+        <h1>Trouver un arret</h1>
+    </header>
+
+    <label class="hide-completed">
+        Arrêt
+    </label>
+        <input id="triArret" type="text" name="text" placeholder="Nom de l'arrêt" />
+
+    <ul>
+        {{#each listeArrets}}
+            {{>arret}}
+        {{/each}}
+    </ul>
+
+
+
+</div>
+
+</body>

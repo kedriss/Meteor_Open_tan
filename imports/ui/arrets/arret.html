@@ -1,0 +1,10 @@
+<template name="arret">
+
+    {{#if equalFindArret libelle}}
+        <li>
+            <span>{{libelle}}</span>
+            {{#each ligne }} <span>{{numLigne}}</span>
+            {{/each}}
+        </li>
+    {{/if}}
+</template>
