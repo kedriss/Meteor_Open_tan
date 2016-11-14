@@ -8,26 +8,22 @@ import { Session } from 'meteor/session';
 import './task.js';
 import './arrets/arret.js';
 import './body.html';
+import './app_body/App_body.html';
 
 function listeArrets1(){
     return Meteor.call("listeArret","COMM","commerce");
      }
 
-FlowRouter.route('/lists/:_id', {
-    name: 'Lists.show',
+BlazeLayout.setRoot("#container");
+FlowRouter.route('/arrets', {
+    name: 'arrets',
     action(params, queryParams) {
-    console.log("Looking at a list?");
+    BlazeLayout.render('App_body', {main: 'arret'});
 }
 });
 
 Template.body.helpers({
-    listeArrets(){
-      Meteor.call("listeArret", function(error, result){
-          Session.set('listeArrets',JSON.parse(JSON.parse(result).content));
-            }
-          );
-        return Session.get('listeArrets');
-    },
+
 /*listeArrets(){
  var fonctionsync = Meteor.wrapAsync(Meteor.call);
     var retour = fonctionsync("listeArret","COMM","commerce");

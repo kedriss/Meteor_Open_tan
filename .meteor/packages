@@ -24,3 +24,5 @@ http
 promise
 session
 kadira:flow-router
+twbs:bootstrap
+kadira:blaze-layout

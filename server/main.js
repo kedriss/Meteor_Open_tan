@@ -16,7 +16,7 @@ var getArrets = function (idLigne, codeArret) {}
                 this.unblock();
                 var url = serveurTan + "tempsattente.json/" + idLigne ;//+ "/" + codeArret;
                 console.log(url);
-                /* return callTempsAttente(url);*/
+
                 return HTTP.get(url);
 
 
@@ -28,6 +28,7 @@ var getArrets = function (idLigne, codeArret) {}
                 }
                 var url = serveurTan + "arrets.json"+coordinate;
                 var retour = HTTP.get(url);
+                console.log(url);
                 return JSON.stringify(retour);
             }
         });

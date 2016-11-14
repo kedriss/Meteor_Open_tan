@@ -1,5 +1,5 @@
 <body>
-<div class="container">
+<div class="container" id="container">
     <header>
         <h1>Trouver un arret</h1>
     </header>
@@ -8,15 +8,6 @@
         Arrêt
     </label>
         <input id="triArret" type="text" name="text" placeholder="Nom de l'arrêt" />
-
-    <ul>
-        {{#each listeArrets}}
-            {{>arret}}
-        {{/each}}
-    </ul>
-
-
-
+    {{>App_body}}
 </div>
-
 </body>

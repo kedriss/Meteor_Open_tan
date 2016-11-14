@@ -10,5 +10,12 @@ Template.registerHelper('equalFindArret', function (libelle) {
 
 Template.arret.helpers({
 
-
+    listeArrets(){
+    console.log("dans liste arret");
+    Meteor.call("listeArret", function(error, result){
+            Session.set('listeArrets',JSON.parse(JSON.parse(result).content));
+        }
+    );
+    return Session.get('listeArrets');
+},
 })

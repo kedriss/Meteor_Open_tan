@@ -1,10 +1,15 @@
 <template name="arret">
-
-    {{#if equalFindArret libelle}}
-        <li>
-            <span>{{libelle}}</span>
-            {{#each ligne }} <span>{{numLigne}}</span>
-            {{/each}}
-        </li>
-    {{/if}}
+    {{#each listeArrets}}
+        {{#if equalFindArret libelle}}
+            <li data-toggle="collapse" href="#collapse{{codeLieu}}" aria-expanded="false">
+                <span >{{libelle}}</span>
+                <div class="collapse" id="collapse{{codeLieu}}">
+                <button value="{{codeLieu}}">Tous</button>
+                    {{#each ligne }}
+                        <button value="{{../codeLieu}}/{{numLigne}}">{{numLigne}}</button>
+                    {{/each}}
+                </div>
+            </li>
+        {{/if}}
+    {{/each}}
 </template>
