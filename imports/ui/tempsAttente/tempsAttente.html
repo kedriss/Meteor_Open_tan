@@ -1,0 +1,6 @@
+<template name="tempsAttenteTemplate">
+
+    {{#each tempsAttente}}
+      <li data="{{codeArret}}"> <img src="tram.png {{ligne.typeLigne}}"/>Ligne {{ligne.numLigne}}, vers : {{terminus}}: {{temps}} </li>
+    {{/each}}
+</template>
