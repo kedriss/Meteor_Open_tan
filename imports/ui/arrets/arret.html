@@ -1,4 +1,13 @@
 <template name="arret">
+    <header>
+        <h1>Trouver un arret</h1>
+    </header>
+
+    <label class="hide-completed">
+        Arrêt
+    </label>
+    <input id="triArret" type="text" name="text" placeholder="Nom de l'arrêt" />
+
     {{#each listeArrets}}
         {{#if equalFindArret libelle}}
             <li data-toggle="collapse" href="#collapse{{codeLieu}}" aria-expanded="false">
