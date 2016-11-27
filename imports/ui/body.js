@@ -7,6 +7,7 @@ import { ReactiveDict } from 'meteor/reactive-dict'
 import { Session } from 'meteor/session';
 import './task.js';
 import './arrets/arret.js';
+import './tempsAttente/tempsAttente.js';
 import './body.html';
 import './app_body/App_body.html';
 
@@ -16,49 +17,28 @@ function listeArrets1(){
 
 BlazeLayout.setRoot("#container");
 FlowRouter.route('/arrets', {
-    name: 'arrets',
-    action(params, queryParams) {
-    BlazeLayout.render('App_body', {main: 'arret'});
+        name: 'arrets',
+        action(params, queryParams) {
+        BlazeLayout.render('App_body', {main: 'arret'});
 }
 });
 
+FlowRouter.route('/tempsAttente/:idarret',{
+    name:'tempsAttenteRoute',
+    action(params,queryParams){
+        Session.set('idarret',params.idarret);
+        BlazeLayout.render('App_body', {main: 'tempsAttenteTemplate'});
+}
+}
+);
 Template.body.helpers({
 
-/*listeArrets(){
- var fonctionsync = Meteor.wrapAsync(Meteor.call);
-    var retour = fonctionsync("listeArret","COMM","commerce");
-    console.log(retour);
-    return retour;
-},*/
-    incompleteCount(){
-        return Tasks.find({ checked: { $ne: true } }).count();
-    }
 });
 
-Template.body.onCreated(function bodyOnCreated() {
-    this.state = new ReactiveDict();
-});
+
 
 Template.body.events({
-    'submit .new-task'(event) {
-    // Prevent default browser form submit
-    event.preventDefault();
-
-    // Get value from form element
-    const target = event.target;
-    const text = target.text.value;
-
-    // Insert a task into the collection
-    Tasks.insert({
-        text:text,
-        createdAt: new Date(), // current time
-    });
-
-    // Clear form
-    target.text.value = '';
-},'change .hide-completed input'(event, instance) {
-    instance.state.set('hideCompleted', event.target.checked);
-},'input #triArret'(event){
+'input #triArret'(event){
     var temp = Session.get('listeArrets');
     Session.set('listeArrets',[]);
     Session.set('listeArrets',temp);

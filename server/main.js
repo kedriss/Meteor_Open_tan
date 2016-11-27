@@ -1,7 +1,47 @@
 import { Meteor } from 'meteor/meteor';
 import '../imports/api/tasks.js';
 import { HTTP } from 'meteor/http'
+function flattenTempsArret(objets, retour){
 
+    var promise = new Promise(function(resolve, reject){
+        _.forEach(objets,function(objet){
+
+            if (retour[objet.arret.codeArret]){
+                if(retour[objet.arret.codeArret].temps[objet.sens]){
+                    retour[objet.arret.codeArret].temps[objet.sens].attente.push(objet.temps);
+                }else{
+                    retour[objet.arret.codeArret].temps[objet.sens]= {
+                        sens: objet.sens,
+                        attente: [objet.temps]
+                    }
+                }
+            }
+            else {
+                retour.codesArret.push(objet.arret.codeArret);
+                var temps =[];
+                temps[objet.sens]= {
+                    sens: objet.sens,
+                    attente: [objet.temps]
+                };
+                console.log(temps);
+                retour[objet.arret.codeArret] = {
+                    codeArret: objet.arret.codeArret,
+                    ligne: objet.ligne,
+                    temps:temps
+                }
+            }
+
+        });
+        retour.data=[]
+        _.forEach(retour.codesArret, function(variable){
+            retour.data.push(retour[variable]);
+
+        })
+       // console.log(retour);
+        resolve(retour);
+    });
+    return promise;
+};
 Meteor.startup(() => {
     // code to run on server at startup
   //  var serveurTan = "http://open_preprod.tan.fr/ewp/";
@@ -9,15 +49,16 @@ Meteor.startup(() => {
 
 var getArrets = function (idLigne, codeArret) {}
 
+//test
 
     if (Meteor.isServer) {
         Meteor.methods({
-            tempsAttente: function (idLigne, codeArret) {
-                this.unblock();
-                var url = serveurTan + "tempsattente.json/" + idLigne ;//+ "/" + codeArret;
-                console.log(url);
-
-                return HTTP.get(url);
+            gettempsAttente: function (codeLieu) {
+                var tab ={codesArret:[]};
+                var url = serveurTan + "tempsattente.json/" + codeLieu;
+               // console.log(url);
+                var retour = HTTP.get(url);
+                return flattenTempsArret(JSON.parse(retour.content), tab);
 
 
             },
@@ -28,8 +69,8 @@ var getArrets = function (idLigne, codeArret) {}
                 }
                 var url = serveurTan + "arrets.json"+coordinate;
                 var retour = HTTP.get(url);
-                console.log(url);
-                return JSON.stringify(retour);
+                //console.log(url);
+                return retour;
             }
         });
     }
@@ -42,3 +83,4 @@ var getArrets = function (idLigne, codeArret) {}
 //});
 
 });
+
