@@ -1,50 +1,66 @@
 import { Meteor } from 'meteor/meteor';
 import '../imports/api/tasks.js';
 import { HTTP } from 'meteor/http'
-function flattenTempsArret(objets, retour){
+
+function flattenTempsArret(objets){
 
     var promise = new Promise(function(resolve, reject){
+    var retour =[];
         _.forEach(objets,function(objet){
-
-            if (retour[objet.arret.codeArret]){
-                if(retour[objet.arret.codeArret].temps[objet.sens]){
-                    retour[objet.arret.codeArret].temps[objet.sens].attente.push(objet.temps);
-                }else{
-                    retour[objet.arret.codeArret].temps[objet.sens]= {
-                        sens: objet.sens,
-                        attente: [objet.temps]
-                    }
-                }
-            }
-            else {
-                retour.codesArret.push(objet.arret.codeArret);
-                var temps =[];
-                temps[objet.sens]= {
-                    sens: objet.sens,
-                    attente: [objet.temps]
-                };
-                console.log(temps);
-                retour[objet.arret.codeArret] = {
-                    codeArret: objet.arret.codeArret,
-                    ligne: objet.ligne,
-                    temps:temps
-                }
-            }
+        retour[objet.ligne.numLigne]=getObject(retour, objet, objet.terminus, objet.sens);
 
         });
-        retour.data=[]
-        _.forEach(retour.codesArret, function(variable){
-            retour.data.push(retour[variable]);
+        var data=[]
 
-        })
-       // console.log(retour);
-        resolve(retour);
+        for (var key in retour)
+        {
+            data.push(retour[key]);
+        };
+        retour.data= data;
+        //console.log(data);
+        resolve(data);
+
     });
     return promise;
 };
+
+function getObject( objets, objetCourrant, sens){
+var retour = null;
+    for( var objetkey in objets){//(objets, function(objet){
+        var objet = objets[objetkey];
+        if(objet.codeArret == objetCourrant.ligne.numLigne){
+            _.forEach(objet.terminus, function(term){
+                if (term.terminus==objetCourrant.terminus) // si pour un terminus on match on renvoi l'objet
+                {   term.temps.push({value:objetCourrant.temps});
+                    retour =objet;
+                    return retour;
+                }
+            })
+            // sinon on creer l'objet terminus, puis  on renvois l'objet global
+            if (retour == null)
+            objet.terminus.push({terminus :objetCourrant.terminus,
+                                 sens :objetCourrant.sens ,
+                                 temps :[{value:objetCourrant.temps}]});
+            retour = objet;
+            return retour;
+        }
+
+    }
+if (retour == null)
+    retour= { codeArret : objetCourrant.ligne.numLigne,
+             terminus :[{terminus :objetCourrant.terminus,
+                         sens :objetCourrant.sens,
+                         temps :[{value:objetCourrant.temps}]
+                      }],
+        ligne: objetCourrant.ligne
+            }
+    return retour;
+}
+
+
 Meteor.startup(() => {
     // code to run on server at startup
-  //  var serveurTan = "http://open_preprod.tan.fr/ewp/";
+    //var serveurTan = "http://open_preprod.tan.fr/ewp/";
       var serveurTan = "http://open.tan.fr/ewp/";
 
 var getArrets = function (idLigne, codeArret) {}
@@ -54,13 +70,11 @@ var getArrets = function (idLigne, codeArret) {}
     if (Meteor.isServer) {
         Meteor.methods({
             gettempsAttente: function (codeLieu) {
-                var tab ={codesArret:[]};
+
                 var url = serveurTan + "tempsattente.json/" + codeLieu;
-               // console.log(url);
-                var retour = HTTP.get(url);
-                return flattenTempsArret(JSON.parse(retour.content), tab);
-
-
+                var retourTan = HTTP.get(url);
+                var promise =   flattenTempsArret(JSON.parse(retourTan.content));
+                return promise;
             },
             listeArret: function (lattitude, longitude) {
                 var coordinate="";
