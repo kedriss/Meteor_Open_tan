@@ -1,6 +1,19 @@
 <template name="tempsAttenteTemplate">
 
     {{#each tempsAttente}}
-      <li data="{{codeArret}}"> <img src="tram.png {{ligne.typeLigne}}"/>Ligne {{ligne.numLigne}}, vers : {{terminus}}: {{temps}} </li>
+      <li> <img class="iconeTypeTransport" src='/icones/TypeTransport/{{ligne.typeLigne}}.png' /> Ligne {{codeArret }}
+        {{#each terminus}}
+            <ul>
+           vers : {{terminus}}
+            {{#each temps }}
+                {{value}};
+            {{/each}}
+            </ul>
+        {{/each}}
+        </li>
     {{/each}}
+
+
+
+
 </template>
