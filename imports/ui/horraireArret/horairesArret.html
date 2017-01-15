@@ -1,0 +1,26 @@
+<template name="horairesArret">
+    <header>
+        <div id="getBack">Back</div>  <h1>horaire a l'arret A CHANGER!!!! {{nomArret}}</h1>
+    </header>
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>Heure</th>
+<th>Minutes</th>
+</tr>
+</thead>
+<tbody>
+{{ #each horairesArret.horaires}}
+    <tr>
+       <td>{{heure}}</td>
+        <td>
+            {{#each passages}}
+                <span class="temps" > {{.}} </span>
+            {{/each}}
+        </td>
+    </tr>
+
+    {{/each}}
+    </tbody>
+</table>
+</template>

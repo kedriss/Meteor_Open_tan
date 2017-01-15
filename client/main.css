@@ -38,7 +38,25 @@ header {
 #login-buttons {
     display: block;
 }
-
+.temps{
+    float:left;
+    background-color: lightgray;
+    margin:2px 2px 2px 2px;
+    border-radius: 3px;
+    padding: 3px;
+}
+.tempsContainer{
+    float:left;
+}
+.tempsLibelle{
+float:left;
+}
+.down_right_arrow:before {
+    content: "\279C";
+}
+.buttonTemps{
+    margin:1px;
+}
 h1 {
     font-size: 1.5em;
     margin: 0;

@@ -8,6 +8,7 @@ import { Session } from 'meteor/session';
 import './task.js';
 import './arrets/arret.js';
 import './tempsAttente/tempsAttente.js';
+import './horraireArret/horairesArret.js';
 import './body.html';
 import './app_body/App_body.html';
 
@@ -22,20 +23,36 @@ FlowRouter.route('/arrets', {
         BlazeLayout.render('App_body', {main: 'arret'});
 }
 });
-
 FlowRouter.route('/tempsAttente/:idarret',{
     name:'tempsAttenteRoute',
     action(params,queryParams){
+    Session.set('idarret',params.idarret);
+    Session.set('idligne',params.idligne);
+    BlazeLayout.render('App_body', {main: 'tempsAttenteTemplate'});
+}
+}
+);
+
+FlowRouter.route('/tempsAttente/:idarret/:idligne',{
+    name:'tempsAttenteRoute2',
+    action(params,queryParams){
         Session.set('idarret',params.idarret);
+        Session.set('idligne',params.idligne);
         BlazeLayout.render('App_body', {main: 'tempsAttenteTemplate'});
 }
 }
 );
-Template.body.helpers({
 
-});
-
-
+FlowRouter.route('/horairesArret/:codeArret/:numLigne/:sens',{
+    name:'horairesArretRoute',
+    action(params,queryParams){
+    Session.set('horaire.codeArret',params.codeArret);
+    Session.set('horaire.numLigne',params.numLigne);
+    Session.set('horaire.sens',params.sens);
+    BlazeLayout.render('App_body', {main: 'horairesArret'});
+}
+}
+);
 
 Template.body.events({
 'input #triArret'(event){

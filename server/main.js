@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import '../imports/api/tasks.js';
 import { HTTP } from 'meteor/http'
 
-function flattenTempsArret(objets){
+function flattenTempsArret(objets,idLigne){
 
     var promise = new Promise(function(resolve, reject){
     var retour =[];
@@ -12,7 +12,8 @@ function flattenTempsArret(objets){
         });
         var data=[]
 
-        for (var key in retour)
+       if(idLigne && retour[idLigne]) data.push(retour[idLigne]);
+       else for (var key in retour)
         {
             data.push(retour[key]);
         };
@@ -28,7 +29,7 @@ function getObject( objets, objetCourrant, sens){
 var retour = null;
     for( var objetkey in objets){//(objets, function(objet){
         var objet = objets[objetkey];
-        if(objet.codeArret == objetCourrant.ligne.numLigne){
+        if(objet.numLigne == objetCourrant.ligne.numLigne){
             _.forEach(objet.terminus, function(term){
                 if (term.terminus==objetCourrant.terminus) // si pour un terminus on match on renvoi l'objet
                 {   term.temps.push({value:objetCourrant.temps});
@@ -47,10 +48,11 @@ var retour = null;
 
     }
 if (retour == null)
-    retour= { codeArret : objetCourrant.ligne.numLigne,
-             terminus :[{terminus :objetCourrant.terminus,
-                         sens :objetCourrant.sens,
-                         temps :[{value:objetCourrant.temps}]
+    retour= {numLigne : objetCourrant.ligne.numLigne,
+             codeArret: objetCourrant.arret.codeArret,
+             terminus :[{terminus : objetCourrant.terminus,
+                         sens     : objetCourrant.sens,
+                         temps    :[{value:objetCourrant.temps}]
                       }],
         ligne: objetCourrant.ligne
             }
@@ -63,17 +65,16 @@ Meteor.startup(() => {
     //var serveurTan = "http://open_preprod.tan.fr/ewp/";
       var serveurTan = "http://open.tan.fr/ewp/";
 
-var getArrets = function (idLigne, codeArret) {}
-
 //test
 
     if (Meteor.isServer) {
         Meteor.methods({
-            gettempsAttente: function (codeLieu) {
+            gettempsAttente: function (params) {
 
-                var url = serveurTan + "tempsattente.json/" + codeLieu;
+                var url = serveurTan + "tempsattente.json/" + params.idArret;
                 var retourTan = HTTP.get(url);
-                var promise =   flattenTempsArret(JSON.parse(retourTan.content));
+
+                var promise = flattenTempsArret(JSON.parse(retourTan.content),params.idLigne);
                 return promise;
             },
             listeArret: function (lattitude, longitude) {
@@ -85,16 +86,20 @@ var getArrets = function (idLigne, codeArret) {}
                 var retour = HTTP.get(url);
                 //console.log(url);
                 return retour;
+            },
+            horairesArret:function(params){
+                var param='/';
+                param += params.codeArret+'/'+params.numLigne+'/'+params.sens;
+                var url = serveurTan + "horairesarret.json"+param;
+                console.log(url);
+                var retour = HTTP.get(url);
+                console.log(retour);
+                return retour.data;
+
             }
         });
     }
-    //  Meteor.publish('horaire.arret', function(idLigne, codeArret) {
-    // http://open_preprod.tan.fr/ewp/tempsattente.json/COMM
 
-
-//});
-
-//});
 
 });
 

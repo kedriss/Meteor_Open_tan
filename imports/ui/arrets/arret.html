@@ -13,9 +13,9 @@
             <li data-toggle="collapse" href="#collapse{{codeLieu}}" aria-expanded="false">
                 <span >{{libelle}}</span>
                 <div class="collapse" id="collapse{{codeLieu}}">
-                <button value="{{codeLieu}}">Tous</button>
+                <button class="selectLigneButton" value="{{codeLieu}}">Tous</button>
                     {{#each ligne }}
-                        <button value="{{../codeLieu}}/{{numLigne}}">{{numLigne}}</button>
+                        <button class="selectLigneButton" value="{{../codeLieu}}/{{numLigne}}">{{numLigne}}</button>
                     {{/each}}
                 </div>
             </li>

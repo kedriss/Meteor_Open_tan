@@ -1,16 +1,22 @@
 <template name="tempsAttenteTemplate">
+    <header>
+      <div id="getBack">Back</div>  <h1>Temps d'attente a l'arret {{nomArret}}</h1>
+    </header>
 
     {{#each tempsAttente}}
-      <li> <img class="iconeTypeTransport" src='/icones/TypeTransport/{{ligne.typeLigne}}.png' /> Ligne {{codeArret }}
+      <div class="list-group"> <img class="iconeTypeTransport" src='/icones/TypeTransport/{{ligne.typeLigne}}.png' />
+          <strong>Ligne {{numLigne }}</strong>
         {{#each terminus}}
-            <ul>
-           vers : {{terminus}}
-            {{#each temps }}
-                {{value}};
-            {{/each}}
-            </ul>
+         <button  value="{{../codeArret}}/{{../numLigne}}/{{sens}}" class="list-group-item buttonTemps">
+          <div class="col-xs-5 .col-sm-3  tempsLibelle down_right_arrow">{{terminus}}</div>
+          <div class="col-xs-7 .col-sm-3 tempsContainer">
+               {{#each temps }}
+                    <div class ="temps">{{value}} </div>
+               {{/each}}
+          </div>
+         </button>
         {{/each}}
-        </li>
+        </div>
     {{/each}}
 
 
