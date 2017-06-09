@@ -22,3 +22,12 @@ Template.horairesArret.helpers({
        return Session.get('horairesArret');
 }
 })
+
+Template.horairesArret.events({
+    'click #getBack'(event){
+        var idarret = Session.get('idarret');
+        var idligne = Session.get('idligne');
+        Session.set("tempsAttente",[]);
+        FlowRouter.go("/tempsAttente/"+idarret+"/"+idligne);
+    }
+});

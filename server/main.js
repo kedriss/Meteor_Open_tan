@@ -77,14 +77,16 @@ Meteor.startup(() => {
                 var promise = flattenTempsArret(JSON.parse(retourTan.content),params.idLigne);
                 return promise;
             },
-            listeArret: function (lattitude, longitude) {
+            listeArret: function (params) {
                 var coordinate="";
-                if (lattitude && longitude){
-                    var coordinate = "/"+lattitude+"/"+longitude;
+                if (params.lat && params.long){
+                    var coordinate = "/"+params.lat.replace('.',',')+"/"+params.long.replace('.',',');
                 }
                 var url = serveurTan + "arrets.json"+coordinate;
+
+                console.log(url);
                 var retour = HTTP.get(url);
-                //console.log(url);
+                //console.log(retour);
                 return retour;
             },
             horairesArret:function(params){

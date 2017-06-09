@@ -1,4 +1,4 @@
-<template name="arret">
+<template name="arret" xmlns="http://www.w3.org/1999/html">
     <header>
         <h1>Trouver un arret</h1>
     </header>
@@ -7,15 +7,16 @@
         Arrêt
     </label>
     <input id="triArret" type="text" name="text" placeholder="Nom de l'arrêt" />
+    <input type="checkbox" id="position" {{NextToMe}} class='radio-button'/>Près de moi
 
     {{#each listeArrets}}
         {{#if equalFindArret libelle}}
             <li data-toggle="collapse" href="#collapse{{codeLieu}}" aria-expanded="false">
                 <span >{{libelle}}</span>
                 <div class="collapse" id="collapse{{codeLieu}}">
-                <button class="selectLigneButton" value="{{codeLieu}}">Tous</button>
+                <button class="selectLigneButton btn btn-outline-primary" value="{{codeLieu}}">Tous</button>
                     {{#each ligne }}
-                        <button class="selectLigneButton" value="{{../codeLieu}}/{{numLigne}}">{{numLigne}}</button>
+                        <button class="selectLigneButton btn btn-outline-primary" value="{{../codeLieu}}/{{numLigne}}">{{numLigne}}</button>
                     {{/each}}
                 </div>
             </li>

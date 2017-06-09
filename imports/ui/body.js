@@ -23,6 +23,15 @@ FlowRouter.route('/arrets', {
         BlazeLayout.render('App_body', {main: 'arret'});
 }
 });
+FlowRouter.route('/arrets/:lat/:long', {
+    name: 'arrets',
+    action(params, queryParams) {
+        Session.set('lat',params.lat);
+        Session.set('long',params.long);
+        Session.set('NextToMe','checked');
+        BlazeLayout.render('App_body', {main: 'arret'});
+    }
+});
 FlowRouter.route('/tempsAttente/:idarret',{
     name:'tempsAttenteRoute',
     action(params,queryParams){
