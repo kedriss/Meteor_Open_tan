@@ -13,14 +13,13 @@ Template.arret.helpers({
   if (!Session.get('listeArrets')) {
       var lat = Session.get('lat');
       var long = Session.get('long');
-      if (!isNaN(lat) && !isNaN(long)){
           Meteor.call("listeArret", {lat: lat, long: long}, function (error, result) {
                   console.log(result);
                   var listeArrets = JSON.parse(result.content);
                   Session.set('listeArrets', listeArrets);
               }
           );
-      }
+
   }
     return Session.get('listeArrets');
 },

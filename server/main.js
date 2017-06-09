@@ -79,7 +79,7 @@ Meteor.startup(() => {
             },
             listeArret: function (params) {
                 var coordinate="";
-                if (params.lat && params.long){
+                if (params.lat && params.long && !isNaN(lat) && !isNaN(long)){
                     var coordinate = "/"+params.lat.replace('.',',')+"/"+params.long.replace('.',',');
                 }
                 var url = serveurTan + "arrets.json"+coordinate;
