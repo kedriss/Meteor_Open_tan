@@ -1,5 +1,4 @@
-@import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
-@import "/node_modules/bootstrap/dist/css/bootstrap-theme.min.css";
+
 /* CSS declarations go here */
 body {
     font-family: sans-serif;
@@ -16,6 +15,9 @@ body {
     padding: 0;
     margin: 0;
     font-size: 14px;
+}
+.img_localisation{
+    width:20px;
 }
 .typeLigne1{
     src: url("icones/tram.png");

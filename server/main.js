@@ -1,6 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import '../imports/api/tasks.js';
 import { HTTP } from 'meteor/http'
+//import '/public/jquery/dist/jquery';
+//import '/public/bootstrap/dist/js/bootstrap';
+
 
 function flattenTempsArret(objets,idLigne){
 
@@ -79,7 +82,7 @@ Meteor.startup(() => {
             },
             listeArret: function (params) {
                 var coordinate="";
-                if (params.lat && params.long && !isNaN(lat) && !isNaN(long)){
+                if (params.lat && params.long && !isNaN(params.lat) && !isNaN(params.long)){
                     var coordinate = "/"+params.lat.replace('.',',')+"/"+params.long.replace('.',',');
                 }
                 var url = serveurTan + "arrets.json"+coordinate;

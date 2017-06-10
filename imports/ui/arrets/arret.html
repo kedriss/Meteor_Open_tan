@@ -7,8 +7,8 @@
         Arrêt
     </label>
     <input id="triArret" type="text" name="text" placeholder="Nom de l'arrêt" />
-    <input type="checkbox" id="position" {{NextToMe}} class='radio-button'/>Près de moi
-
+    <input type="checkbox" id="position" {{NextToMe}} class='radio-button'/> <label for="position" ><img class ='img_localisation' src="/icones/generique/localisation.png"/></label>
+    <i id='spinner'     class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>
     {{#each listeArrets}}
         {{#if equalFindArret libelle}}
             <li data-toggle="collapse" href="#collapse{{codeLieu}}" aria-expanded="false">

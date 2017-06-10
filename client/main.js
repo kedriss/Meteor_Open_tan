@@ -1,5 +1,7 @@
-import '../imports/api/tasks.js';
+
 import '../imports/ui/body.js';
+import '../imports/style/bootstrap/dist/css/bootstrap.css';
+import '../imports/style/bootstrap/dist/css/bootstrap-theme.css';
 
 
 /*import { Template } from 'meteor/templating';

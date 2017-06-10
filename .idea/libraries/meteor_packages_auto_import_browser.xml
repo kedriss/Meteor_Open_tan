@@ -80,6 +80,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/web.browser/client.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/autoupdate/1.2.11/web.browser/autoupdate_client.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/web.browser/css.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/bootstrap/1.0.1/web.browser/packages/bootstrap/css/bootstrap-responsive.css" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/web.browser/buffer.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/web.browser/server.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/templating-runtime/1.2.15/web.browser/dynamic.js" />
@@ -88,6 +89,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.9/web.browser/view.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.9/web.browser/materializer.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.9/web.browser/template.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/bootstrap/1.0.1/web.browser/packages/bootstrap.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.9/web.browser/exceptions.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/templating-tools/1.0.5/web.browser/templating-tools.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.9/web.browser/attrs.js" />
@@ -96,8 +98,10 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.9/web.browser/backcompat.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/templating-tools/1.0.5/web.browser/html-scanner.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.9/web.browser/events.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/bootstrap/1.0.1/web.browser/packages/bootstrap/css/bootstrap.css" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/templating-tools/1.0.5/web.browser/html-scanner-tests.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.9/web.browser/lookup.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/bootstrap/1.0.1/web.browser/packages/bootstrap/css/bootstrap-override.css" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/templating-tools/1.0.5/web.browser/throw-compile-error.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.9/web.browser/builtins.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/observe-sequence/1.0.14/web.browser/observe_sequence.js" />
@@ -235,6 +239,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/web.browser/client.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/autoupdate/1.2.11/web.browser/autoupdate_client.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/web.browser/css.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/bootstrap/1.0.1/web.browser/packages/bootstrap/css/bootstrap-responsive.css" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/web.browser/buffer.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/web.browser/server.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/templating-runtime/1.2.15/web.browser/dynamic.js" />
@@ -243,6 +248,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.9/web.browser/view.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.9/web.browser/materializer.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.9/web.browser/template.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/bootstrap/1.0.1/web.browser/packages/bootstrap.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.9/web.browser/exceptions.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/templating-tools/1.0.5/web.browser/templating-tools.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.9/web.browser/attrs.js" />
@@ -251,8 +257,10 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.9/web.browser/backcompat.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/templating-tools/1.0.5/web.browser/html-scanner.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.9/web.browser/events.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/bootstrap/1.0.1/web.browser/packages/bootstrap/css/bootstrap.css" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/templating-tools/1.0.5/web.browser/html-scanner-tests.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.9/web.browser/lookup.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/bootstrap/1.0.1/web.browser/packages/bootstrap/css/bootstrap-override.css" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/templating-tools/1.0.5/web.browser/throw-compile-error.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/blaze/2.1.9/web.browser/builtins.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/observe-sequence/1.0.14/web.browser/observe_sequence.js" />
